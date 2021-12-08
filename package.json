@@ -1,0 +1,44 @@
+{
+  "name": "react-jsonschema-validate-edit",
+  "version": "1.0.0",
+  "description": "json schema validate edit",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "npx tsc -p ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jp-programmer1/react-jsonschema-validate-edit.git"
+  },
+  "keywords": [
+    "jsonschema",
+    "react-jsonschema",
+    "jsonschema",
+    "editor",
+    "editor",
+    "jsonschema",
+    "jsonschema",
+    "validator",
+    "visual",
+    "jsonschema",
+    "validator"
+  ],
+  "author": "Juan P. Fernández - jpprogrammer1@gmail.com - https://www.linkedin.com/in/juan-pablo-fern%C3%A1ndez-23a940180/",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jp-programmer1/react-jsonschema-validate-edit/issues"
+  },
+  "homepage": "https://github.com/jp-programmer1/react-jsonschema-validate-edit#readme",
+  "peerDependencies": {
+    "react": ">=16.11.0"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.37",
+    "react": "^17.0.2",
+    "typescript": "^4.5.2"
+  },
+  "dependencies": {
+    "json-schema-yup-transformer": "^1.6.0"
+  }
+}
