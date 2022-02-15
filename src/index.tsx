@@ -1,4 +1,7 @@
-import JsonSchemaValidateEdit from "./JsonSchemaValidateEdit";
+import JsonSchemaValidate from "./JsonSchemaValidate";
 import { transformYup } from "./transformYup";
 
-export { JsonSchemaValidateEdit, transformYup };
+export { 
+  JsonSchemaValidate, 
+  transformYup
+};

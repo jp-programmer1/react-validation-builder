@@ -11,5 +11,5 @@ export const transformYup = (data:InterfaceDataTransformYup) => {
     const yupschema = convertToYup(data.jsonschema, data.errors);
     return yupschema;
   }
-  return "error: the data does not exist";
+  return undefined;
 }
