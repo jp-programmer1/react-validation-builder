@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "build": "npx tsc -p ."
+    "build": "npx tsc -p . && ncp ./src/theme ./lib/styles"
   },
   "repository": {
     "type": "git",
@@ -40,6 +40,7 @@
     "typescript": "^4.5.2"
   },
   "dependencies": {
-    "json-schema-yup-transformer": "^1.6.0"
+    "json-schema-yup-transformer": "^1.6.0",
+    "ncp": "^2.0.0"
   }
 }
