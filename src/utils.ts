@@ -3,9 +3,7 @@ import { JsonSchema } from "./interfaces/JsonSchemaInterface";
 export const defaultSchema = ({
   type: 'object',
   title: 'root',
-  properties: {
-    input1: { type: 'string' }
-  }
+  properties: {}
 });
 
 export const parseList = (props:JsonSchema) => {

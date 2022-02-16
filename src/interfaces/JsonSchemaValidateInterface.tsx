@@ -12,7 +12,7 @@ export interface JsonSchemaValidateInterface {
   componentAdd?: JSX.Element
   className?:string;
   id?:string;
-  removeItem?:(name:string) => void;
+  removeItem?:string;
   onFinishedRemoveItem?:(status:boolean) => void;
   showList?:boolean
 }
