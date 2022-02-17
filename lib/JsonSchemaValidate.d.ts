@@ -11,9 +11,9 @@ import '../lib/styles/styles.css';
  * @param componentOnCollapse integrate component when collapsed is true
  * @param componentRemove integrate remove item component
  * @param id set container id
- * @param getList function that returns a properties list in array object
+
  * @returns {JSX.Element}
  * @constructor
  */
-declare const JsonSchemaValidate: ({ data, onChange, className, componentAdd, componentOffCollapse, componentOnCollapse, componentRemove, id, getList }: JsonSchemaValidateInterface) => JSX.Element;
+declare const JsonSchemaValidate: ({ data, onChange, className, componentAdd, componentOffCollapse, componentOnCollapse, componentRemove, id, showList }: JsonSchemaValidateInterface) => JSX.Element;
 export default JsonSchemaValidate;

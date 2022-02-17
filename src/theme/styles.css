@@ -1,3 +1,48 @@
+:root {
+  --colorText: rgb(112, 111, 111);
+}
 .form-group-react-jsonschema-validate-editor{
   margin-right: 1rem;
 }
+.react-jsonschema-validate-editor-container{
+  width: 100%;
+  color: var(--colorText);
+}
+.react-jsonschema-validate-editor-collapse span{
+  display: block;
+  font-size: 1.6rem;
+  cursor: pointer;
+  text-align: right;
+}
+
+
+
+.json-editor-collapse-down{
+  text-align: left!important;
+  transform: rotate(180deg);
+}
+.text-json-editor-h6{
+  text-align: left;
+  color: var(--colorText);
+}
+.json-validate-editor-extended-configuration-container{
+  margin-left: 1rem;
+}
+.json-validate-editor-divider{
+  width: 15%;
+  height: 1px;
+  background-color: #01A7BE;
+}
+
+
+/* class utils */
+.t-l{
+  text-align: left;
+}
+.t-r{
+  text-align: right;
+}
+.t-c{
+  text-align: center;
+}
+

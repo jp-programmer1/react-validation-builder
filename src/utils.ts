@@ -1,18 +1,10 @@
-import { JsonSchema } from "./interfaces/JsonSchemaInterface";
 
 export const defaultSchema = ({
   type: 'object',
   title: 'root',
-  properties: {}
+  properties: {},
+  required: []
 });
-
-export const parseList = (props:JsonSchema) => {
-  let list:any = [];
-
-
-
-  return list;
-}
 
 export const optionsType = [
   { value: undefined, label: "Select Type" },
@@ -23,6 +15,7 @@ export const optionsType = [
 ];
 
 export const optionsFormat = [
+  { value: undefined, label: "Select Format" },
   { value: "date-time", label: "Date Time" },
   { value: "date", label: "Date" },
   { value: "email", label: "Email" },

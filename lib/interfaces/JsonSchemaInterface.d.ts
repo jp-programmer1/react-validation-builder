@@ -23,6 +23,7 @@
  */
 export interface JsonSchema {
     $ref?: string;
+    name?: string;
     /**
      * This is important because it tells refs where
      * the root of the document is located
@@ -88,9 +89,7 @@ export interface JsonSchema {
      * The keys that can exist on the object with the
      * json schema that should validate their value
      */
-    properties?: {
-        [property: string]: JsonSchema;
-    };
+    properties?: any;
     /**
      * The key of this object is a regex for which
      * properties the schema applies to

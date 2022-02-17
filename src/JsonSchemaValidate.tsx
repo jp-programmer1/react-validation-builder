@@ -1,8 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { JsonSchema } from './interfaces/JsonSchemaInterface';
-import { JsonSchemaValidateInterface } from './interfaces/JsonSchemaValidateInterface';
-import { defaultSchema, optionsType, parseList } from './utils';
+import { JsonSchemaValidateInterface, JsonSchemaValuesInterface } from './interfaces/JsonSchemaValidateInterface';
+import { defaultSchema, optionsType } from './utils';
+import {ExtendedConfigEdit} from './ExtendedConfigEdit';
+import { InputCustom, SelectCustom, SwitchCustom } from './components/Index';
 import '../lib/styles/styles.css';
 
 
@@ -15,60 +16,88 @@ import '../lib/styles/styles.css';
  * @param componentOnCollapse integrate component when collapsed is true
  * @param componentRemove integrate remove item component
  * @param id set container id
- * @param getList function that returns a properties list in array object
+
  * @returns {JSX.Element}
  * @constructor
  */
 
 const JsonSchemaValidate = ({ data = defaultSchema, onChange, className = "", componentAdd, componentOffCollapse,
-  componentOnCollapse, componentRemove, id, getList }: JsonSchemaValidateInterface) => {
+  componentOnCollapse, componentRemove, id, showList }: JsonSchemaValidateInterface) => {
 
-  const [collapsed, setCollapsed] = useState();
+  const [collapsed, setCollapsed] = useState<boolean>(true);
+  const onCollapsed = useCallback(() => setCollapsed(current => !current), []);
 
-  const [valueEdit, setValueEdit] = useState<JsonSchema>();
-  const [addValue, setAddValue] = useState({});
+  const [values, setValues] = useState<JsonSchemaValuesInterface>({});
+  const [keyEdit, setKeyEdit] = useState();
 
-  const onChangeCallback = useCallback(() => {
-    let copyData = { ...data };
-    onChange(data);
-  }, [data, onChange]);
+  useEffect(() => {
+    if(keyEdit){
+      let find = data.properties[keyEdit!];
+      if(find) setValues(data.properties[keyEdit!]);
+    }
+  }, []);
+  const onChangeCallback = useCallback((value, name) => {
+    let copyData = { ...values };
+    copyData[name] = value;
+    console.log(copyData);
+    
+    setValues(copyData);
+  }, [values]);
 
   const onAdd = useCallback(() => {
-    let copyData = { ...data };
+    if(values){
+      let copyData = { ...data };
+      if(keyEdit){
+        delete values.name;
+        copyData.properties[keyEdit!] = values;
+      }else{
+        let key = values.name;
+        delete values.name
+        copyData.properties[key!] = values
+      }
+      copyData.properties = {...copyData.properties, ...values};
+    }
 
-    if (getList !== undefined) getList(parseList(data));
 
-  }, [addValue, valueEdit, data, getList]);
+  }, [keyEdit, data, values, onChange]);
+
+  useEffect(() => {if(values.type === "boolean") setCollapsed(true)}, [values.type]);
 
   const onRemove = useCallback(() => {
 
   }, []);
 
-
   return (
     <div className={`react-jsonschema-validate-editor-container ${className}`} id={id}>
       <div className="row align-items-center">
-        <div className="col-md-3">
-          <input type="text" name="name" placeholder="Name Field" className="form-control" />
+        <div className="col-sm-4">
+          <InputCustom type="text" placeholder="Name Field" value={values.name} onChange={(value) => onChangeCallback(value, "name")}/>
         </div>
-        <div className="col-md-3">
-          <select className="form-select" name="type">
-            {optionsType.map((op, key) => (
-              <option value={op.value} key={key}>{op.label}</option>
-            ))}
-          </select>
+        <div className="col-sm-4">
+          <SelectCustom name="type" value={values.type} onChange={(value) => onChangeCallback(value, "type")} options={optionsType} />
         </div>
-        <div className="col-md-1 form-check">
-          <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-          <label className="form-check-label" htmlFor="exampleCheck1">required</label>
+        <div className="col-sm-2 form-check">
+          <SwitchCustom label="Required" name="required" value={values.required} onChange={(checked) => onChangeCallback(checked, "required")} />
         </div>
-        <div className="col-md-3">
-          <button className="btn btn-outline-secondary" type="button">Collapse</button>
-        </div>
+        {values.type && values.type !== "boolean" && 
+          <div className="col-sm-2 react-jsonschema-validate-editor-collapse">
+            <span className={`${!collapsed ? "json-editor-collapse-down" : ""}`} onClick={onCollapsed} >^</span>
+          </div>
+        }
       </div>
       <div className="text-start mt-3">
-        <button className="btn btn-success text-align-left" type="button">Add</button>
+        <button className="btn btn-success text-align-left" onClick={onAdd} type="button">{keyEdit ? 'Edit' : 'Add'}</button>
       </div>
+
+      {!collapsed && 
+        <div className="mt-2 json-validate-editor-extended-configuration-container">
+          <div className="text-json-editor-h6 mb-2">
+            <h6>Extended Configuration</h6>
+            <div className="json-validate-editor-divider"></div>
+          </div>
+          <ExtendedConfigEdit values={values} onChangeCallback={(value:any, name:string) => onChangeCallback(value, name)} />
+        </div>
+      }
     </div>
   );
 }

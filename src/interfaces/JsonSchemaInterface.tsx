@@ -24,6 +24,7 @@
 
  export interface JsonSchema {
   $ref?: string;
+  name?:string
   /////////////////////////////////////////////////
   // Schema Metadata
   /////////////////////////////////////////////////
@@ -106,7 +107,7 @@
    * The keys that can exist on the object with the
    * json schema that should validate their value
    */
-  properties?: {[property: string]: JsonSchema};
+  properties?: any;
   /**
    * The key of this object is a regex for which
    * properties the schema applies to
