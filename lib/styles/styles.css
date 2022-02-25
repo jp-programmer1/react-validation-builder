@@ -1,40 +1,6 @@
 :root {
   --colorText: rgb(112, 111, 111);
 }
-.form-group-react-jsonschema-validate-editor{
-  margin-right: 1rem;
-}
-.react-jsonschema-validate-editor-container{
-  width: 100%;
-  color: var(--colorText);
-}
-.react-jsonschema-validate-editor-collapse span{
-  display: block;
-  font-size: 1.6rem;
-  cursor: pointer;
-  text-align: right;
-}
-
-
-
-.json-editor-collapse-down{
-  text-align: left!important;
-  transform: rotate(180deg);
-}
-.text-json-editor-h6{
-  text-align: left;
-  color: var(--colorText);
-}
-.json-validate-editor-extended-configuration-container{
-  margin-left: 1rem;
-}
-.json-validate-editor-divider{
-  width: 15%;
-  height: 1px;
-  background-color: #01A7BE;
-}
-
-
 /* class utils */
 .t-l{
   text-align: left;
@@ -46,3 +12,70 @@
   text-align: center;
 }
 
+/* Badge */
+.react-jsonschema-validate-editor-container{
+  padding: 1rem;
+}
+.validate-editor-container-button-add{
+  display: flex;
+  justify-content: start;
+  margin-bottom: 0.5rem;
+}
+.validation-builder-badge{
+  border-radius: 0.4rem;
+  cursor: pointer;
+  padding: 0.3rem;
+  margin-left: 0.2rem;
+ 
+}
+
+/* Input Tag */
+.validate-editor-container-select-type .validation-builder-data-tags .validation-builder-badge-container{
+  margin-left: 1rem;
+}
+.validator-builder-options-tag{
+  position: absolute;
+  margin-top: 0.2rem;
+  width: auto;
+  border-radius: 4px;
+  background-color: white;
+  border: 1px solid rgba(230, 230, 230, 0.705);
+  text-align: center;
+  color: var(--colorText);
+  z-index: 99999;
+
+}
+.validator-builder-options{
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 0.5rem;
+  transition: all .1s ease-in-out;
+}
+.validator-builder-options:hover{
+  background-color: rgba(182, 182, 182, 0.199);
+  color: rgb(114, 112, 112);
+}
+
+.validation-builder-data-tags{
+  text-align: left;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+.validation-builder-grid{
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center
+}
+.validation-builder-grid div{
+  margin-left: 0.3rem;
+}
+.validate-editor-container-config-tags .validation-builder-data-tags .validation-builder-badge-container{
+  margin-right: 1rem;
+  margin-top: 0.3rem;
+}
+
+/* ACTIONS */
+.validation-builder-item-message{
+  
+}

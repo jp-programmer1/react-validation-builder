@@ -1,20 +1,11 @@
-export declare const defaultSchema: {
-    type: string;
-    title: string;
+export declare const optionsType: {
+    name: string;
+}[];
+export declare const parseToProperties: (values: any) => {
     properties: {};
-    required: never[];
+    required: any;
+    errors: {};
+    key: any;
 };
-export declare const optionsType: ({
-    value: undefined;
-    label: string;
-} | {
-    value: string;
-    label: string;
-})[];
-export declare const optionsFormat: ({
-    value: undefined;
-    label: string;
-} | {
-    value: string;
-    label: string;
-})[];
+export declare const searchKeyData: (data: any, key: any) => object;
+export declare const getList: (values: any, errors: any) => object[];

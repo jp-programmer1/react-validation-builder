@@ -1,7 +1,7 @@
-import JsonSchemaValidate from "./JsonSchemaValidate";
+import JsonSchemaValidate from "./bootstrap/JsonSchemaValidate";
 import { transformYup } from "./transformYup";
 
 export { 
-  JsonSchemaValidate, 
+  JsonSchemaValidate,
   transformYup
 };

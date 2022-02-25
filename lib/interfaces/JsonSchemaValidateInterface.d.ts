@@ -1,21 +1,17 @@
-/// <reference types="react" />
-import { JsonSchema } from "./JsonSchemaInterface";
 export interface JsonSchemaValidateInterface {
-    data: JsonSchema;
-    onChange: (value: JsonSchema) => void;
-    componentOnCollapse?: JSX.Element;
-    componentOffCollapse?: JSX.Element;
-    componentRemove?: JSX.Element;
-    componentAdd?: JSX.Element;
+    data: any;
+    onChange: (value: any, arrayList: any) => void;
+    iconClassRemove?: string;
+    iconClassAdd?: string;
+    iconClassEdit?: string;
     className?: string;
     id?: string;
-    showList?: boolean;
 }
-export interface JsonSchemaValuesInterface {
+export interface ValuesInterface {
     name?: string;
     required?: Array<string>;
-    type?: 'number' | 'string' | 'integer' | "boolean";
-    format?: 'date-time' | "date" | "hostname" | "email" | "ipv4" | "ipv6" | "uri";
+    type?: any;
+    format?: any;
     pattern?: any;
     minLength?: number;
     maxLength?: number;
@@ -24,4 +20,5 @@ export interface JsonSchemaValuesInterface {
     exclusiveMaximum?: boolean;
     minimum?: number;
     maximum?: number;
+    messageError?: string;
 }
