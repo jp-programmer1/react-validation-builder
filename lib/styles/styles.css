@@ -29,13 +29,19 @@
  
 }
 
+.validation-builder-container-tags-select{
+  display: flex;
+}
+/* Select Tag */
+.validation-builder-contianer-input{
+  width: 100px;
+}
 /* Input Tag */
 .validate-editor-container-select-type .validation-builder-data-tags .validation-builder-badge-container{
   margin-left: 1rem;
 }
 .validator-builder-options-tag{
   position: absolute;
-  margin-top: 0.2rem;
   width: auto;
   border-radius: 4px;
   background-color: white;

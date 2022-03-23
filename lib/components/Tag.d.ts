@@ -5,17 +5,11 @@ interface data {
     value: any;
 }
 interface Props {
-    options: Array<any>;
-    values?: any;
     styles?: object;
     name: string;
-    onFinishedEdit?: () => void;
-    data?: data;
-    onActivateEdit?: (name: string) => void;
-    editing: boolean;
-    onChange: (value: any) => void;
-    onSubmitModal?: (name: any, value: any) => void;
-    onRemove?: (name: string) => void;
+    data: data;
+    namekey: string;
+    onClickTag?: (e: any) => void;
 }
-declare const Tag: ({ values, styles, name, onActivateEdit, editing, onChange, options, data, onRemove }: Props) => JSX.Element;
+declare const Tag: ({ data, styles, name, onClickTag, namekey }: Props) => JSX.Element;
 export default Tag;

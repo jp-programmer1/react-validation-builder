@@ -18,7 +18,7 @@ interface options {
 }
 export interface SelectProps {
     name?: string;
-    value: any;
+    value?: any;
     onChange: (value: string | number) => void;
     options: Array<options>;
     required?: boolean;

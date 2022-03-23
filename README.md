@@ -19,18 +19,19 @@ Easy to use json schema validation editor.
 	    );
 	  }
 
-## Properties
-| name | type | default | description |
-|--|----------|------------|-------------|
-| data | JsonSchema | undefined | the json schema object |
-| onChange | Function Callback |  | function that returns a jsonschema |
-| className | string | null |  container className |
-| id | string | null  | set container id |
-| componentOnCollapse | JSX |  | integrate component when collapsed is true |
-| componentOffCollapse | JSX |  | integrate component when collapsed is false |
-| componentRemove | JSX |  | integrate remove item component|
-| componentAdd | JSX |  | integrate add item component |
-| getList | array |  | function that returns a properties list in array object |
-| showList | boolean | true | show list when adding items |
-| removeItem | string |  | receives the name of the value you want to remove |
-| onFinishedRemoveItem | Function Callback |  | function that warns that I delete an element |
+## Example
+´´´
+const schema = {
+  person: {
+    type: "string",
+    required: {required: true, message: "Este campo es requerido"},
+    min: { limit: 2, message: "Hello" },
+    fieldKey: "person"
+  },
+  phone: {
+    type: "number",
+    required: {required: true, message: "Este campo es requerido"},
+    fieldKey: "phone"
+  }
+};
+´´´
