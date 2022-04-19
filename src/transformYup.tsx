@@ -1,15 +1,41 @@
 import React from 'react';
-import convertToYup from "json-schema-yup-transformer";
+import * as yup from 'yup';
+import { types } from './utils';
 
-interface InterfaceDataTransformYup {
-  jsonschema: object
-  errors: object
-}
+const transformSchemaToYup = (data) => {
+  
+  const transformSchema = () => {
+    if(data){
+      let schema = {}
+      for (const key in data) {
+        let nameField = key;
+        let values = data[key];
+        let type = values.type;
+        let actions = types[type];
+        delete values.fieldKey;
+        delete values.type;
+        let keysValidation = Object.keys(values);
+        console.log(keysValidation);
+        
+        // schema = {
+        //   ...schema, 
+        //   [nameField]: 
+        // }
 
-export const transformYup = (data:InterfaceDataTransformYup) => {
-  if(data){
-    const yupschema = convertToYup(data.jsonschema, data.errors);
-    return yupschema;
+        
+        
+        
+        
+      }
+    }
+    return {};
+    
+ 
   }
-  return undefined;
+
+
+
+  return yup.object().shape({...transformSchema()});
 }
+
+export default transformSchemaToYup;

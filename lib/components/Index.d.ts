@@ -11,6 +11,7 @@ interface InputProps {
     disabled?: any;
     onEnter?: (e: any) => void;
     onClick?: (e: any) => void;
+    onBlur?: (e: any) => void;
 }
 interface options {
     label: string;
@@ -31,7 +32,7 @@ interface SwitchProps {
     onChange: (value: boolean) => void;
     disabled?: any;
 }
-export declare const InputCustom: ({ name, value, onChange, type, placeholder, min, max, required, disabled, onEnter, onClick }: InputProps) => JSX.Element;
+export declare const InputCustom: ({ name, value, onChange, type, placeholder, min, max, required, disabled, onEnter, onClick, onBlur }: InputProps) => JSX.Element;
 export declare const SelectCustom: ({ name, value, onChange, options, required, disabled }: SelectProps) => JSX.Element;
 export declare const SwitchCustom: ({ name, value, label, onChange, disabled }: SwitchProps) => JSX.Element;
 export {};

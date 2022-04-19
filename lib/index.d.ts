@@ -1,3 +1,3 @@
-import JsonSchemaValidate from "./bootstrap/JsonSchemaValidate";
-import { transformYup } from "./transformYup";
-export { JsonSchemaValidate, transformYup };
+import ValidationBuilderEditor from "./bootstrap";
+import transformSchemaToYup from './transformYup';
+export { ValidationBuilderEditor, transformSchemaToYup };

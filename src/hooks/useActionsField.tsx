@@ -1,45 +1,54 @@
 import React, { useCallback, useEffect, useState } from 'react'
 
-export const useActionsField = (data) => {
+export const useActionsField = (data, onChange) => {
   const [values, setValues] = useState(data);
-  const [editing, setEditing] = useState({});
   const [fields, setFields] = useState<Array<any>>([]);
+  const [fieldKeys, setFieldKeys] =  useState<Array<any>>([]);
 
   useEffect(() => setValues(data), [data]);
+
   const onAddField = useCallback(() => {
     let copyValues = {...values};
     let keys = Object.keys(copyValues).length;
-    copyValues[`field${keys}`] = {type: "string"};
+    copyValues[`field${keys}`] = {type: "string", fieldKey: `field${keys}`};
     setValues(copyValues);
   }, [values]);
 
-  const onEditField = useCallback((name) => {
-    let copyEditing = { ...editing };
-    for (const key in copyEditing) {
-      if (key === name) copyEditing[key] = !copyEditing[key]
-      else copyEditing[key] = false;
-    }
-    console.log(copyEditing);
-    
-    setEditing(copyEditing);
-  }, [editing]);
+  const onRemoveField = useCallback((index) => {
+    let copyField = [...fields];
+    copyField.splice(index, 1);
+    onChange(structureData(copyField));
+  }, [fields, onChange]);
 
   const onChangeCallback = useCallback((value, index) => {
-    let copyField = [...fields];
-    copyField[index] = { ...value };
-    setFields(copyField);
-  }, [fields]);
+    fields[index] = { ...value };
+    onChange(structureData(fields));
+  }, [fields, onChange]);
 
   useEffect(() => {
     let list: Array<any> = [];
-    let typeEditing: object = {};
+    const fieldsNames:Array<any> = [];
     for (const key in values) {
-      list.push({ ...values[key], name: key });
-      typeEditing = { ...typeEditing, [key]: false };
+      list.push({ ...values[key] });
+      fieldsNames.push(key);
     }
-    setEditing(typeEditing);
+    setFieldKeys(fieldsNames);
     setFields(list);
   }, [values]);
 
-  return {onChangeCallback, onEditField, onAddField, fields, editing}
+  const structureData = useCallback((field:Array<any>) => {
+    let data = {};
+    field.forEach(e => {
+      data = { ...data, [e.fieldKey]: { ...e } };
+    });
+    return data;
+  }, []);
+
+  const onChangeFieldName = useCallback((value, key) => {
+    let copy = [...fieldKeys];
+    copy[key] = value;
+    setFieldKeys(copy)
+  }, []);
+
+  return {onChangeCallback, onAddField, fields, onRemoveField, onChangeFieldName, fieldKeys}
 }

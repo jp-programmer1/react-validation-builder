@@ -1,11 +1,7 @@
-export interface JsonSchemaValidateInterface {
+export interface ValidationBuilderEditorInterface {
     data: any;
     onChange: (value: any, arrayList: any) => void;
-    iconClassRemove?: string;
-    iconClassAdd?: string;
-    iconClassEdit?: string;
     className?: string;
-    id?: string;
 }
 export interface ValuesInterface {
     name?: string;

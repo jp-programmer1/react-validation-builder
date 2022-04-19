@@ -1,20 +1,37 @@
 export declare const optionsType: {
-    name: string;
+    label: string;
+    value: string;
 }[];
 export declare const types: {
-    string: {
+    string: ({
+        name: string;
+        fieldType: string;
+        key?: undefined;
+    } | {
         name: string;
         key: string;
         fieldType: string;
-    }[];
-    number: {
+    })[];
+    number: ({
+        name: string;
+        fieldType: string;
+        key?: undefined;
+    } | {
         name: string;
         key: string;
         fieldType: string;
-    }[];
-    date: {
+    })[];
+    date: ({
+        name: string;
+        fieldType: string;
+        key?: undefined;
+    } | {
         name: string;
         key: string;
+        fieldType: string;
+    })[];
+    boolean: {
+        name: string;
         fieldType: string;
     }[];
 };

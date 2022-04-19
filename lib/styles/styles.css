@@ -19,25 +19,29 @@
 .validate-editor-container-button-add{
   display: flex;
   justify-content: start;
+  align-items: center;
   margin-bottom: 0.5rem;
 }
 .validation-builder-badge{
   border-radius: 0.4rem;
   cursor: pointer;
-  padding: 0.3rem;
+  padding: 0.4rem;
   margin-left: 0.2rem;
- 
 }
 
-.validation-builder-container-tags-select{
-  display: flex;
+.validation-builder-container-tags{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.validation-builder-field-select{
+  width: 50%;
 }
 /* Select Tag */
 .validation-builder-contianer-input{
   width: 100px;
 }
 /* Input Tag */
-.validate-editor-container-select-type .validation-builder-data-tags .validation-builder-badge-container{
+.validate-editor-container-select-type .validation-builder-data-tags {
   margin-left: 1rem;
 }
 .validator-builder-options-tag{
@@ -71,17 +75,38 @@
   display: grid;
   width: 100%;
   grid-template-columns: repeat(4, 1fr);
-  align-items: center
+  align-items: center;
+  grid-gap: 1px;
 }
 .validation-builder-grid div{
   margin-left: 0.3rem;
 }
-.validate-editor-container-config-tags .validation-builder-data-tags .validation-builder-badge-container{
+.validate-editor-container-config-tags .validation-builder-data-tags {
+  margin-right: 0.7rem;
+}
+.validate-editor-container-remove-field{
   margin-right: 1rem;
-  margin-top: 0.3rem;
+}
+.validation-builder-badge-container{
+  margin-right: 1rem;
+  margin-top: 5px;
+}
+.validation-builder-conatainer-select-tag{
+  margin-top: 5px!important;
 }
 
 /* ACTIONS */
-.validation-builder-item-message{
-  
+.validation-builder-item-action{
+  background-color: rgba(255, 255, 255, 0.788);
+  color: black;
+  border-radius: 5px;
+}
+.validation-builder-item-action span{
+  margin: 0px 3px;
+}
+.validation-builder-field-action{
+  width: 97%;
+}
+.validation-builder-container-dropdown-menu{
+  width: 20rem;
 }

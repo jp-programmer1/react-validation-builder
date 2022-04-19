@@ -1,14 +1,8 @@
-import { JsonSchema } from "./JsonSchemaInterface";
 
-
-export interface JsonSchemaValidateInterface {
+export interface ValidationBuilderEditorInterface {
   data: any;
   onChange: (value: any, arrayList:any) => void;
-  iconClassRemove?: string;
-  iconClassAdd?: string;
-  iconClassEdit?:string;
   className?:string;
-  id?:string;
 }
 // "string" | "number" | "integer" | "boolean";
 //"date-time" | "date" | "hostname" | "email" | "ipv4" | "ipv6" | "uri";

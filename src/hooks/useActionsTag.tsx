@@ -1,21 +1,29 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { types } from '../utils';
 
-export const useActionsTag = (values:any, onChangeCallback?:(e:any) => void) => {
+export const useActionsTag = (values: any, onChangeCallback: (e: any) => void) => {
   const [generalOptions, setGeneralOptions] = useState<Array<any>>([]);
   const [options, setOptions] = useState<Array<any>>([]);
   const [tags, setTags] = useState<Array<any>>([]);
+  const [actions, setActions] = useState<Array<any>>([]);
 
   useEffect(() => {
+    // structure tags and create options
     if (values) {
       let data: Array<any> = [];
       for (const key in values) {
         if (key !== "type" && key !== "name" && key !== "fieldKey") {
           let tag = key;
-          data.push({ tag, value: values[key], editing: false });
+          data.push({ tag, value: values[key], type: values.type, fieldKey: values.fieldKey });
         }
       }
-      let extractOptions = types[values.type].map(op => ({ value: op.name, label: op.name }));;
+      let extractOptions = types[values.type].map((op:any) => ({ value: op.name, label: op.name }));
+      data.forEach((d, index) => {
+        let findIndex = extractOptions.findIndex(op => op.value === d.tag);
+        if(findIndex === -1){
+          data.splice(index, 1);
+        }
+      })
       setGeneralOptions(extractOptions);
       setTags(data);
     }
@@ -23,44 +31,60 @@ export const useActionsTag = (values:any, onChangeCallback?:(e:any) => void) => 
 
   useEffect(() => {
     // structure options
-    if (generalOptions && tags.length > 0) {
+    if (generalOptions) {
       let copyOptions = [...generalOptions];
-      copyOptions.unshift({ value: "", label: "Add" })
-      tags.forEach(t => {
-        let findIndex = copyOptions.findIndex(op => op.value === t.tag);
-        if (findIndex !== -1) copyOptions.splice(findIndex, 1);
-      });
+      copyOptions.unshift({ value: "", label: "Add" });
+      if(tags.length > 0){
+        tags.forEach((t) => {
+          let findIndex = copyOptions.findIndex(op => op.value === t.tag);
+          if (findIndex !== -1) {
+            copyOptions.splice(findIndex, 1);
+          }
+        });
+
+      }
       setOptions(copyOptions);
     }
   }, [generalOptions, tags]);
 
+  useEffect(() => {
+    //Search ACTIONS
+    if (tags.length > 0) {
+      let searchType = types[values.type];
+      let actions:Array<any> = [];
+      if (searchType.length > 0) {
+        tags.forEach(t => {
+          let find = searchType.find(f => f.name === t.tag);
+          if(find) actions.push({...find, ...t});
+        });
+      }
+      setActions(actions);
+    }
+  }, [values, tags]);
+
   const onAddTag = useCallback((value) => {
     if (value && value !== "") {
-      values[value] = { [value]: "", message: "" };
-      onChangeCallback && onChangeCallback(values);
+      let searchType = types[values.type];
+      let key = searchType.find(s => s.name === value).key;
+      values[value] = { message: "" };
+      if(key){
+        values[value] = { ...values[value], [key]: ""}
+      }
+      onChangeCallback(values);
     }
+  }, [values, onChangeCallback]);
+
+  const onFinishEdit = useCallback((d) => {
+    values[d.tag] = d.value;
+    onChangeCallback(values);
   }, [values, onChangeCallback]);
 
   const onRemoveTag = useCallback((name) => {
     if (window.confirm("Are you sure you want to delete it?")) {
       delete values[name];
-      onChangeCallback && onChangeCallback(values);
+      onChangeCallback(values);
     }
   }, [values, onChangeCallback]);
 
-  const onActivateEdit = useCallback((name, index) => {
-    let data = [...tags];
-    data.forEach(((d, key) => {
-      if (index === key && name === d.tag) d.editing = !d.editing;
-      else d.editing = false;
-    }));
-    setTags(data);
-  }, [tags]);
-
-  const onEditTag = useCallback((name, value) => {
-    let data = [...tags];
-    return data;
-  }, [tags]);
-
-  return {options, tags, generalOptions, onAddTag, onRemoveTag, onActivateEdit, onEditTag};
+  return { options, tags, generalOptions, actions, onAddTag, onRemoveTag, onFinishEdit };
 }
