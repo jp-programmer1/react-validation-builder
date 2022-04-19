@@ -9,27 +9,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jp-programmer1/react-jsonschema-validate-edit.git"
+    "url": "git+https://github.com/jp-programmer1/react-validation-builder.git"
   },
   "keywords": [
-    "jsonschema",
-    "react-jsonschema",
-    "jsonschema",
-    "editor",
-    "editor",
-    "jsonschema",
-    "jsonschema",
-    "validator",
-    "visual",
-    "jsonschema",
-    "validator"
+    "validation",
+    "react-validation",
+    "editor-validation"
   ],
   "author": "Juan P. Fernández - jpprogrammer1@gmail.com - https://www.linkedin.com/in/juan-pablo-fern%C3%A1ndez-23a940180/",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jp-programmer1/react-jsonschema-validate-edit/issues"
+    "url": "https://github.com/jp-programmer1/react-validation-builder/issues"
   },
-  "homepage": "https://github.com/jp-programmer1/react-jsonschema-validate-edit#readme",
+  "homepage": "https://github.com/jp-programmer1/react-validation-builder#readme",
   "peerDependencies": {
     "react": ">=16.11.0"
   },
