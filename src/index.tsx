@@ -1,5 +1,5 @@
 import ValidationBuilderEditor from "./bootstrap";
-import transformSchemaToYup from './transformYup';
+import transformSchemaToYup from './transformYup/transformYup';
 
 export { 
   ValidationBuilderEditor,
