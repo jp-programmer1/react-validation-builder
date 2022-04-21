@@ -1,12 +1,12 @@
 
 export const getProperties = (data) => {
-  //@ts-ignore
-  let values:Array<any> = Object.values(data);
+  let keys: Array<any> = Object.keys(data);
   let props = "";
-  if(values[1]){
-    props += `${values[1]}${values[0] ? `,'${values[0]}'` : ''}`;
-  }else{
-    props += `'${values[0]}'`;
-  }
+  let find = keys.find(k => k !== "message");
+  
+  if(data.message){
+    if(find) props += `${data[find]},`;
+    props += `'${data.message}'`;
+  }else props += `${data[find], ''}`;
   return props;
 }

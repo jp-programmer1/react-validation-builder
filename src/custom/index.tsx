@@ -2,6 +2,7 @@ import React from 'react';
 import { ValidationBuilderEditorInterface } from '../interfaces/ValidationBuilderEditorInterface';
 import { ExtendedConfigEdit } from '../components/ExtendedConfigEdit';
 import { InputCustom } from '../components/Index';
+import '../../lib/styles/styles.css';
 import { useActionsField } from '../hooks/useActionsField';
 import { TagType } from '../components/TagType';
 import '../../lib/styles/styles.css';
@@ -26,11 +27,11 @@ import '../../lib/styles/styles.css';
 
 export const ValidationBuilderEditor = ({ data, onChange, className = "", config, pillStyles }: ValidationBuilderEditorInterface): JSX.Element => {
   const { onChangeCallback, onAddField, fields, onRemoveField, fieldKeys, onChangeFieldName } = useActionsField(data, onChange);
-
+  
   return (
     <div className={`react-jsonschema-validate-editor-container ${className}`}>
       <div className="validate-editor-container-button-add">
-        <button type="button" style={config?.addField?.styles} className="btn btn-primary btn-sm" onClick={onAddField} >
+        <button type="button" style={config?.addField?.styles} className="validate-editor-button" onClick={onAddField} >
           {config?.addField ?
             <React.Fragment>
               {config.addField.icon && <i className={config?.addField.icon} />}
@@ -43,7 +44,7 @@ export const ValidationBuilderEditor = ({ data, onChange, className = "", config
         <div className="row align-items-center mb-3" key={key}>
           <div className="col-sm-3 d-flex align-items-center" style={{ marginTop: 5 }}>
             <div className="validate-editor-container-remove-field">
-              <button type="button" className="btn btn-danger btn-sm" onClick={onRemoveField}>
+              <button type="button" className="validate-editor-button" onClick={onRemoveField}>
                 {config?.removeField ?
                   <React.Fragment>
                     {config.removeField.icon && <i className={config?.removeField.icon} />}
@@ -53,7 +54,7 @@ export const ValidationBuilderEditor = ({ data, onChange, className = "", config
               </button>
             </div>
             <InputCustom type="text" placeholder="Name Field" value={fieldKeys[key]}
-              className="form-control"
+              className="validate-editor-field-input"
               onBlur={() => {
                 field.fieldKey = fieldKeys[key];
                 onChangeCallback(field, key)
@@ -64,7 +65,7 @@ export const ValidationBuilderEditor = ({ data, onChange, className = "", config
           </div>
           <div className="col-sm-2 validate-editor-container-select-type">
             <TagType
-              classNameField="form-select"
+              classNameField="validate-editor-field-input"
               styles={{...pillStyles?.pillType }} 
               data={field} onChange={(value: string) => onChangeCallback(value, key)} 
             />
@@ -75,8 +76,8 @@ export const ValidationBuilderEditor = ({ data, onChange, className = "", config
                 keyComponent={`${key}-${field.fieldKey}`} 
                 values={field} 
                 onChangeCallback={(value: any) => onChangeCallback(value, key)}
-                classNameFieldTag="form-control"
-                classNameFieldSelect="form-select"
+                classNameFieldTag="validate-editor-field-input"
+                classNameFieldSelect="validate-editor-field-input"
                 config={{config: config, stylesTag: pillStyles?.pillTag || {}}}
               />
             }

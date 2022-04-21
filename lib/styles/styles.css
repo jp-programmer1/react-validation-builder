@@ -23,6 +23,7 @@
   margin-bottom: 0.5rem;
 }
 .validation-builder-badge{
+  border: 1px solid rgba(128, 128, 128, 0.397);
   border-radius: 0.4rem;
   cursor: pointer;
   padding: 0.4rem;
@@ -43,6 +44,9 @@
 /* Input Tag */
 .validate-editor-container-select-type .validation-builder-data-tags {
   margin-left: 1rem;
+}
+.validate-editor-container-select-type{
+  margin-top: 5px!important;
 }
 .validator-builder-options-tag{
   position: absolute;
@@ -109,4 +113,25 @@
 }
 .validation-builder-container-dropdown-menu{
   width: 20rem;
+}
+.validation-builder-item-custom-message{
+  margin-left: 0px!important;
+}
+.validation-builder-item-custom-message, .validation-builder-item-action, 
+.validation-builder-item-custom-string, .validation-builder-item-custom-date{
+  border: 1px solid rgba(106, 106, 106, 0.453);
+  padding: 0.2rem;
+  border-radius: 4px;
+  margin-left: 0px!important;
+}
+
+/** CUSTOM **/
+.validate-editor-button{
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 0.2rem;
+}
+.validate-editor-field-input{
+  width: 100%;
+  height: 2.3rem;
 }

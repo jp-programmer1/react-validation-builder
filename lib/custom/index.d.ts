@@ -1,6 +1,7 @@
 /// <reference types="react" />
 import { ValidationBuilderEditorInterface } from '../interfaces/ValidationBuilderEditorInterface';
 import '../../lib/styles/styles.css';
+import '../../lib/styles/styles.css';
 /**
  * @param onChange function that returns a object and list (schema) => void;
  * @param className set container className
