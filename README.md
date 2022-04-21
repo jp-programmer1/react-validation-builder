@@ -15,7 +15,7 @@ $ yarn add react-validation-builder
   const config = {
     addField: { icon: "fas fa-plus", text: " Add" },
     removeField: { icon: "fas fa-times" },
-    message: { icon: "fas fa-comment"},
+    message: { icon: "fas fa-comment", styles: { color: "black" } },
     removeTag: { icon: "fas fa-times" },
     valueStringTag: { icon: "fas fa-cog" },
     valueDateTag: { icon: "fas fa-calendar" },
@@ -37,14 +37,16 @@ $ yarn add react-validation-builder
     );
   }
 ```
-
 ### Functionality to transform the schema to Yup
 ```
-  import { ValidationBuilderEditor } from 'react-validation-builder/lib/bootstrap';
+  import { transformSchemaToYup } from 'react-validation-builder';
+  const schemaYup = transformSchemaToYup(schema);
 ```
 
 ### component for bootstrap
-import { transformSchemaToYup } from 'react-validation-builder';
+```
+  import { ValidationBuilderEditor } from 'react-validation-builder/lib/bootstrap';
+```
 ## Contributors 👽
 ### Code Contributors
 ![jpprogrammer](https://avatars.githubusercontent.com/u/52465504?s=56&)
