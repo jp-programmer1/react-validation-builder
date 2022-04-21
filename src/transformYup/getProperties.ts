@@ -1,6 +1,12 @@
 
 export const getProperties = (data) => {
-  for (const key in data) {
-    return data;
+  //@ts-ignore
+  let values:Array<any> = Object.values(data);
+  let props = "";
+  if(values[1]){
+    props += `${values[1]}${values[0] ? `,'${values[0]}'` : ''}`;
+  }else{
+    props += `'${values[0]}'`;
   }
+  return props;
 }
