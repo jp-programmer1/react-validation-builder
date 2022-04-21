@@ -32,9 +32,7 @@ $ yarn add react-validation-builder
       setschema(val);
     }, []);
 
-    return (
-	    <ValidationBuilderEditor data={schema} onChange={onChange} config={config} pillStyles={pillStyles}/>
-    );
+    return <ValidationBuilderEditor data={schema} onChange={onChange} config={config} pillStyles={pillStyles}/>
   }
 ```
 ### Functionality to transform the schema to Yup
