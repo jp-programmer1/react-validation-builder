@@ -19,8 +19,6 @@ const transformSchema = (data) => {
       if(yupType){
         let keysValidation: Array<any> = Object.keys(values);
         let structureFunction = `return ${yupType}${getKeys(keysValidation, values)}`;
-        console.log(structureFunction);
-        
         let getSchema = new Function("yup", structureFunction);
         schema = { ...schema, [nameField]: getSchema(yup) };
       }
