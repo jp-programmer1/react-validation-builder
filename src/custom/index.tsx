@@ -5,7 +5,6 @@ import { InputCustom } from '../components/Index';
 import '../../lib/styles/styles.css';
 import { useActionsField } from '../hooks/useActionsField';
 import { TagType } from '../components/TagType';
-import '../../lib/styles/styles.css';
 
 /**
  * @param onChange function that returns a object and list (schema) => void;
@@ -26,10 +25,10 @@ import '../../lib/styles/styles.css';
  */
 
 export const ValidationBuilderEditor = ({ data, onChange, className = "", config, pillStyles }: ValidationBuilderEditorInterface): JSX.Element => {
-  const { onChangeCallback, onAddField, fields, onRemoveField, fieldKeys, onChangeFieldName } = useActionsField(data, onChange);
+  const { onChangeCallback, onAddField, fields, onRemoveField, fieldKeys, onChangeFieldName, onChangeType } = useActionsField(data, onChange);
   
   return (
-    <div className={`react-jsonschema-validate-editor-container ${className}`}>
+    <div className={`validate-builder-container ${className}`}>
       <div className="validate-editor-container-button-add">
         <button type="button" style={config?.addField?.styles} className="validate-editor-button" onClick={onAddField} >
           {config?.addField ?
@@ -41,8 +40,8 @@ export const ValidationBuilderEditor = ({ data, onChange, className = "", config
         </button>
       </div>
       {fields && fields.map((field, key) => (
-        <div className="row align-items-center mb-3" key={key}>
-          <div className="col-sm-3 d-flex align-items-center" style={{ marginTop: 5 }}>
+        <div className="validate-builder-TC-container-fields" key={key}>
+          <div className="validate-builder-TC-fields-remove" style={{ marginTop: 5 }}>
             <div className="validate-editor-container-remove-field">
               <button type="button" className="validate-editor-button" onClick={onRemoveField}>
                 {config?.removeField ?
@@ -63,14 +62,14 @@ export const ValidationBuilderEditor = ({ data, onChange, className = "", config
                 onChangeFieldName(value, key);
               }} />
           </div>
-          <div className="col-sm-2 validate-editor-container-select-type">
+          <div className="validate-editor-container-select-type">
             <TagType
               classNameField="validate-editor-field-input"
               styles={{...pillStyles?.pillType }} 
-              data={field} onChange={(value: string) => onChangeCallback(value, key)} 
+              data={field} onChange={(value: string) => onChangeType(value, key)} 
             />
           </div>
-          <div className="col-sm-7 validate-editor-container-config-tags ">
+          <div className="validate-editor-container-config-tags ">
             {field.type &&
               <ExtendedConfigEdit 
                 keyComponent={`${key}-${field.fieldKey}`} 

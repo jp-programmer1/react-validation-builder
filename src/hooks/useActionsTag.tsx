@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { types } from '../utils';
 
 export const useActionsTag = (values: any, onChangeCallback: (e: any) => void) => {
@@ -18,12 +18,6 @@ export const useActionsTag = (values: any, onChangeCallback: (e: any) => void) =
         }
       }
       let extractOptions = types[values.type].map((op:any) => ({ value: op.name, label: op.name }));
-      data.forEach((d, index) => {
-        let findIndex = extractOptions.findIndex(op => op.value === d.tag);
-        if(findIndex === -1){
-          data.splice(index, 1);
-        }
-      })
       setGeneralOptions(extractOptions);
       setTags(data);
     }

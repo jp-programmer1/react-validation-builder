@@ -1,4 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
+import { types } from '../utils';
 
 export const useActionsField = (data, onChange) => {
   const [values, setValues] = useState(data);
@@ -48,7 +49,27 @@ export const useActionsField = (data, onChange) => {
     let copy = [...fieldKeys];
     copy[key] = value;
     setFieldKeys(copy)
-  }, []);
+  }, [fieldKeys]);
 
-  return {onChangeCallback, onAddField, fields, onRemoveField, onChangeFieldName, fieldKeys}
+  const onChangeType = useCallback((value, key) => {
+    let copyFields = [...fields];
+    let type = value.type;
+    let fieldKey = value.fieldKey
+    let newType = types[value.type];
+    let fieldSelect = copyFields[key];
+    console.log(fieldSelect);
+    
+    if(value.type !== fieldSelect.type){
+      for (const keyField in fieldSelect) {
+        let find = newType.find((t:any) => t.name === keyField);
+        if(!find) delete value[keyField];
+      }
+      value = {...value, type, fieldKey: fieldKey};
+      
+      onChangeCallback(value, key);
+    }
+    
+  }, [fields, onChangeCallback]);
+
+  return {onChangeCallback, onAddField, fields, onRemoveField, onChangeFieldName, onChangeType, fieldKeys}
 }

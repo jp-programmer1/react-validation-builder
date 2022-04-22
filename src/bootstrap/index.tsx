@@ -25,7 +25,7 @@ import '../../lib/styles/styles.css';
  */
 
 export const ValidationBuilderEditor = ({ data, onChange, className = "", config, pillStyles }: ValidationBuilderEditorInterface): JSX.Element => {
-  const { onChangeCallback, onAddField, fields, onRemoveField, fieldKeys, onChangeFieldName } = useActionsField(data, onChange);
+  const { onChangeCallback, onAddField, fields, onRemoveField, fieldKeys, onChangeFieldName, onChangeType } = useActionsField(data, onChange);
 
   return (
     <div className={`react-jsonschema-validate-editor-container ${className}`}>
@@ -66,7 +66,7 @@ export const ValidationBuilderEditor = ({ data, onChange, className = "", config
             <TagType
               classNameField="form-select"
               styles={{...pillStyles?.pillType }} 
-              data={field} onChange={(value: string) => onChangeCallback(value, key)} 
+              data={field} onChange={(value: string) => onChangeType(value, key)} 
             />
           </div>
           <div className="col-sm-7 validate-editor-container-config-tags ">

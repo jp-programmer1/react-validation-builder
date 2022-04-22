@@ -1,16 +1,6 @@
 :root {
   --colorText: rgb(112, 111, 111);
 }
-/* class utils */
-.t-l{
-  text-align: left;
-}
-.t-r{
-  text-align: right;
-}
-.t-c{
-  text-align: center;
-}
 
 /* Badge */
 .react-jsonschema-validate-editor-container{
@@ -120,7 +110,6 @@
 .validation-builder-item-custom-message, .validation-builder-item-action, 
 .validation-builder-item-custom-string, .validation-builder-item-custom-date{
   border: 1px solid rgba(106, 106, 106, 0.453);
-  padding: 0.2rem;
   border-radius: 4px;
   margin-left: 0px!important;
 }
@@ -130,8 +119,52 @@
   border: 1px solid black;
   background-color: white;
   border-radius: 0.2rem;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+}
+.validate-editor-button:hover{
+  opacity: 0.6;
 }
 .validate-editor-field-input{
+  height: 1.8rem;
   width: 100%;
-  height: 2.3rem;
+}
+.validate-builder-container{
+  padding: 1rem;
+}
+.validate-builder-TC-container-fields{
+  display: flex;
+  align-items: center;
+
+}
+.validate-builder-TC-fields-remove{
+  display: flex;
+  align-items: center;
+}
+.validate-builder-container .validation-builder-grid{
+  display: flex;
+  align-items: center;
+}
+.validate-builder-container .show{
+  display: block!important;
+}
+.validate-builder-container .validation-builder-container-dropdown-menu{
+  display: none;
+  position: absolute;
+  margin-top: 0.4rem;
+  background-color: white;
+  -webkit-box-shadow: 5px 5px 30px 5px rgba(0, 0, 0, 0.153); 
+  box-shadow: 5px 5px 30px 5px rgba(0,0,0,0.153);
+  border-radius: 2px 0;
+  z-index: 999999;
+}
+.validate-builder-container .validation-builder-container-tags{
+  margin-left: 1rem;
+}
+.validate-builder-container .validate-editor-container-select-type{
+  margin-left: 1rem;
+  width: 10rem;
+}
+.validate-builder-container .validation-builder-conatainer-select-tag{
+  margin-left: 1rem;
 }
