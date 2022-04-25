@@ -43,7 +43,7 @@ export const ValidationBuilderEditor = ({ data, onChange, className = "", config
         <div className="validate-builder-TC-container-fields" key={key}>
           <div className="validate-builder-TC-fields-remove" style={{ marginTop: 5 }}>
             <div className="validate-editor-container-remove-field">
-              <button type="button" className="validate-editor-button" onClick={onRemoveField}>
+              <button type="button" className="validate-editor-button" onClick={() => onRemoveField(key)}>
                 {config?.removeField ?
                   <React.Fragment>
                     {config.removeField.icon && <i className={config?.removeField.icon} />}

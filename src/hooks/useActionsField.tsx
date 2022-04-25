@@ -10,9 +10,9 @@ export const useActionsField = (data, onChange) => {
 
   const onAddField = useCallback(() => {
     let copyValues = {...values};
-    let keys = Object.keys(copyValues).length;
+    let keys = Object.keys(copyValues).length + 1;
     copyValues[`field${keys}`] = {type: "string", fieldKey: `field${keys}`};
-    setValues(copyValues);
+    setValues(copyValues)
   }, [values]);
 
   const onRemoveField = useCallback((index) => {

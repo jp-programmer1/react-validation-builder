@@ -30,8 +30,8 @@ export const types = {
   ],
   "date": [
     { name: "required", fieldType: "boolean" },
-    { name: "min", key: "min", fieldType: "date" },
-    { name: "max", key: "max", fieldType: "date" }
+    { name: "min", key: "limit", fieldType: "date" },
+    { name: "max", key: "limit", fieldType: "date" }
   ],
   "boolean": [
     { name: "required", fieldType: "boolean" },
