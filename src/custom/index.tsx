@@ -5,6 +5,8 @@ import { InputCustom } from '../components/Index';
 import '../../lib/styles/styles.css';
 import { useActionsField } from '../hooks/useActionsField';
 import { TagType } from '../components/TagType';
+import IconAdd from '../assets/IconAdd';
+import IconClose from '../assets/IconClose';
 
 /**
  * @param onChange function that returns a object and list (schema) => void;
@@ -30,30 +32,31 @@ export const ValidationBuilderEditor = ({ data, onChange, className = "", config
   return (
     <div className={`validate-builder-container ${className}`}>
       <div className="validate-editor-container-button-add">
-        <button type="button" style={config?.addField?.styles} className="validate-editor-button" onClick={onAddField} >
+        <button type="button" style={config?.addField?.styles} className="validate-editor-button validate-editor-button-add" onClick={onAddField} >
           {config?.addField ?
             <React.Fragment>
               {config.addField.icon && <i className={config?.addField.icon} />}
               {config.addField.text && config.addField.text}
             </React.Fragment>
-            : 'Add'}
+            : <div><IconAdd color="white"/> Add</div>}
         </button>
       </div>
       {fields && fields.map((field, key) => (
         <div className="validate-builder-TC-container-fields" key={key}>
-          <div className="validate-builder-TC-fields-remove" style={{ marginTop: 5 }}>
+          <div className="validate-builder-TC-fields-remove" style={{ marginTop: 5, alignItems: "baseline" }}>
             <div className="validate-editor-container-remove-field">
-              <button type="button" className="validate-editor-button" onClick={() => onRemoveField(key)}>
+              <button type="button" className="validate-editor-button validate-editor-button-remove" style={{padding: config?.removeField ? '0.4rem' : '0rem'}} onClick={() => onRemoveField(key)}>
                 {config?.removeField ?
                   <React.Fragment>
                     {config.removeField.icon && <i className={config?.removeField.icon} />}
                     {config.removeField.text && config.removeField.text}
                   </React.Fragment>
-                  : 'X'}
+                   : <IconClose color="white" />}
               </button>
             </div>
             <InputCustom type="text" placeholder="Name Field" value={fieldKeys[key]}
               className="validate-editor-field-input"
+              activateFocus={(fieldKeys.length - 1) === key}
               onBlur={() => {
                 field.fieldKey = fieldKeys[key];
                 onChangeCallback(field, key)

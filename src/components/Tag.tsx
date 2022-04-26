@@ -1,4 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import IconCalendar from '../assets/IconCalendar';
+import IconClose from '../assets/IconClose';
+import IconKey from '../assets/IconKey';
+import IconMessage from '../assets/IconMessage';
 import { ConfigInterface } from '../interfaces/ValidationBuilderEditorInterface';
 import { DropdownAction } from './DropdownAction';
 import { InputCustom } from './Index';
@@ -34,13 +38,18 @@ const Tag = ({ data, styles, onClickTag, namekey, onRemove, onEditTag, className
       <React.Fragment>
         {copyData && copyData.value &&
           <div className="validation-builder-badge validation-builder-grid" style={{ ...styles }}>
-            <div onClick={() => onClickTag && onClickTag(copyData)}>
+            <div onClick={() => onClickTag && onClickTag(copyData)} className="validation-builder-label">
               {copyData[namekey]}
             </div>
 
             {copyData.fieldType === "number" &&
               <DropdownAction iconComponent={<NumberComponent config={config} value={copyData.value[copyData.key]} />} onFinished={onFinished} >
-                <InputCustom className={classNameField} type="number" onChange={(value: any) => onChange(parseInt(value))} value={copyData.value[copyData.key] || ""} />
+                <InputCustom 
+                  className={classNameField} 
+                  type="number" 
+                  onChange={(value: any) => onChange(parseInt(value))} 
+                  value={copyData.value[copyData.key] || ""} 
+                />
               </DropdownAction>
 
             }
@@ -57,19 +66,19 @@ const Tag = ({ data, styles, onClickTag, namekey, onRemove, onEditTag, className
               </DropdownAction>
 
             }
-
+            {copyData.fieldType !== "number" && copyData.fieldType !== "string" && copyData.fieldType !== "date" && <div></div>}
             <DropdownAction iconComponent={<Message config={config} data={copyData} />} onFinished={onFinished}>
               <InputCustom className={classNameField} type="text" onChange={(value) => onChange(value, "message")} value={copyData.value.message || ""} />
             </DropdownAction>
 
 
-            <div onClick={() => onRemove(copyData[namekey])} style={{ ...config.removeTag && config.removeTag.styles }}>
+            <div onClick={() => onRemove(copyData[namekey])} style={{ ...config.removeTag && config.removeTag.styles }} className="validation-builder-container-remove-tag">
               {config?.removeTag ?
                 <React.Fragment>
                   {config.removeTag.icon && <i className={config.removeTag.icon}></i>}
                   {config.removeTag.text && config.removeTag.text}
                 </React.Fragment>
-                : 'x'}
+                : <IconClose color="gray" />}
 
             </div>
           </div>
@@ -87,12 +96,12 @@ const Message = ({ data, config }) => (
         {config.message.icon && <i className={config.message.icon}></i>}
         {config.message.text && config.message.text}
       </React.Fragment>
-      : <div className='validation-builder-item-custom-message'>m</div>}
+      : <div className='validation-builder-item-icon'><IconMessage /></div>}
   </div>
 );
 
 const NumberComponent = ({ value, config }) => (
-  <div className="validation-builder-item-action" style={{ ...config && config.valueNumberTag && config.valueNumberTag.styles }}>
+  <div className="validation-builder-item-action" style={{...config && config.valueNumberTag && config.valueNumberTag.styles, opacity: value && value !== "" ? 1 : 0.60 }}>
     {config && config.valueNumberTag ?
       <React.Fragment>
         {config.valueNumberTag.icon && <i className={config.valueNumberTag.icon}></i>}
@@ -110,7 +119,7 @@ const StringComponent = ({ value, config }) => (
         {config.valueStringTag.icon && <i className={config.valueStringTag.icon}></i>}
         {config.valueStringTag.text && config.valueStringTag.text}
       </React.Fragment>
-      : <div className='validation-builder-item-custom-string'>s</div>}
+      : <div className='validation-builder-item-icon'><IconKey /></div>}
   </div>
 );
 
@@ -122,7 +131,7 @@ const DateComponent = ({ value, config }) => (
         {config.valueDateTag.icon && <i className={config.valueDateTag.icon}></i>}
         {config.valueDateTag.text && config.valueDateTag.text}
       </React.Fragment>
-      : <div className='validation-builder-item-custom-date'>date</div>}
+      : <div className='validation-builder-item-icon'><IconCalendar /></div>}
   </div>
 );
 

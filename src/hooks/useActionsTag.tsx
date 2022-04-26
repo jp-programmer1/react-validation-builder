@@ -17,7 +17,7 @@ export const useActionsTag = (values: any, onChangeCallback: (e: any) => void) =
           data.push({ tag, value: values[key], type: values.type, fieldKey: values.fieldKey });
         }
       }
-      let extractOptions = types[values.type].map((op:any) => ({ value: op.name, label: op.name }));
+      let extractOptions = types[values.type].map((op:any) => ({ value: op.name, label: op.name, deps: op.deps }));
       setGeneralOptions(extractOptions);
       setTags(data);
     }
@@ -31,11 +31,19 @@ export const useActionsTag = (values: any, onChangeCallback: (e: any) => void) =
       if(tags.length > 0){
         tags.forEach((t) => {
           let findIndex = copyOptions.findIndex(op => op.value === t.tag);
-          if (findIndex !== -1) {
-            copyOptions.splice(findIndex, 1);
-          }
+          // remove deps options
+          if(Array.isArray(copyOptions[findIndex].deps)){
+            copyOptions[findIndex].deps.forEach(op => {
+              let index = copyOptions.findIndex(c => c.value === op);
+              if (index !== -1) copyOptions.splice(index, 1);
+            });
+          };
         });
-
+        //remove select option
+        tags.forEach((t) => {
+          let findIndex = copyOptions.findIndex(op => op.value === t.tag);
+          if(findIndex !== -1) copyOptions.splice(findIndex, 1);
+        });
       }
       setOptions(copyOptions);
     }

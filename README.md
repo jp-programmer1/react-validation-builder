@@ -24,9 +24,30 @@ $ yarn add react-validation-builder
     pillType: {backgroundColor: "green", color: "white"},
     pillTag: {backgroundColor: "blue", color: "white"}
   }
+
+  const schema = {
+    person: {
+      "type": "string",
+      "required": {
+        "message": "required field"
+      },
+      "min": {
+        "limit": 2,
+        "message": "min 2"
+      },
+      "fieldKey": "person",
+      "max": {
+        "message": "max 30",
+        "limit": 30
+      },
+      "email": {
+        "message": "Error: Wrong email"
+      }
+    }
+  };
   
   const App = () => {
-    const [schema, setSchema] = useState(schema);
+    const [schema, setSchema] = useState({...schema});
 
     const onChange = useCallback((val) => {
       setschema(val);

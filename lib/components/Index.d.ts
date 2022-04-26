@@ -13,6 +13,7 @@ interface InputProps {
     onClick?: (e: any) => void;
     onBlur?: (e: any) => void;
     className?: string;
+    activateFocus?: boolean;
 }
 interface options {
     label: string;
@@ -26,7 +27,8 @@ export interface SelectProps {
     required?: boolean;
     disabled?: any;
     className?: string;
+    onEnter?: (e: any) => void;
 }
-export declare const InputCustom: ({ name, value, onChange, type, placeholder, min, max, required, disabled, onEnter, onClick, onBlur, className }: InputProps) => JSX.Element;
-export declare const SelectCustom: ({ name, value, onChange, options, required, disabled, className }: SelectProps) => JSX.Element;
+export declare const InputCustom: ({ name, value, onChange, type, placeholder, min, max, required, disabled, onEnter, onClick, onBlur, className, activateFocus }: InputProps) => JSX.Element;
+export declare const SelectCustom: ({ name, value, onChange, options, required, disabled, className, onEnter }: SelectProps) => JSX.Element;
 export {};

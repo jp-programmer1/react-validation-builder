@@ -5,6 +5,8 @@ import { InputCustom } from '../components/Index';
 import { useActionsField } from '../hooks/useActionsField';
 import { TagType } from '../components/TagType';
 import '../../lib/styles/styles.css';
+import IconClose from '../assets/IconClose';
+import IconAdd from '../assets/IconAdd';
 
 /**
  * @param onChange function that returns a object and list (schema) => void;
@@ -36,12 +38,12 @@ export const ValidationBuilderEditor = ({ data, onChange, className = "", config
               {config.addField.icon && <i className={config?.addField.icon} />}
               {config.addField.text && config.addField.text}
             </React.Fragment>
-            : 'Add'}
+            : <div><IconAdd color="white"/> Add</div>}
         </button>
       </div>
       {fields && fields.map((field, key) => (
-        <div className="row align-items-center mb-3" key={key}>
-          <div className="col-sm-3 d-flex align-items-center" style={{ marginTop: 5 }}>
+        <div className="row mb-3" key={key}>
+          <div className="col-sm-3 d-flex" style={{marginTop: 5, alignItems: 'baseline'}}>
             <div className="validate-editor-container-remove-field">
               <button type="button" className="btn btn-danger btn-sm" onClick={() => onRemoveField(key)}>
                 {config?.removeField ?
@@ -49,35 +51,39 @@ export const ValidationBuilderEditor = ({ data, onChange, className = "", config
                     {config.removeField.icon && <i className={config?.removeField.icon} />}
                     {config.removeField.text && config.removeField.text}
                   </React.Fragment>
-                  : 'X'}
+                  : <IconClose color="white" />}
               </button>
             </div>
-            <InputCustom type="text" placeholder="Name Field" value={fieldKeys[key]}
-              className="form-control"
-              onBlur={() => {
-                field.fieldKey = fieldKeys[key];
-                onChangeCallback(field, key)
-              }}
-              onChange={(value) => {
-                onChangeFieldName(value, key);
-              }} />
+            <div>
+              <InputCustom type="text" placeholder="Name Field" value={fieldKeys[key]}
+                className="form-control" activateFocus={(fieldKeys.length - 1) === key}
+                onBlur={() => {
+                  field.fieldKey = fieldKeys[key];
+                  onChangeCallback(field, key)
+                }}
+                onChange={(value) => {
+                  onChangeFieldName(value, key);
+                }} />
+            </div>
           </div>
+
           <div className="col-sm-2 validate-editor-container-select-type">
             <TagType
               classNameField="form-select"
-              styles={{...pillStyles?.pillType }} 
-              data={field} onChange={(value: string) => onChangeType(value, key)} 
+              styles={{ ...pillStyles?.pillType }}
+              data={field} onChange={(value: string) => onChangeType(value, key)}
             />
+
           </div>
           <div className="col-sm-7 validate-editor-container-config-tags ">
             {field.type &&
-              <ExtendedConfigEdit 
-                keyComponent={`${key}-${field.fieldKey}`} 
-                values={field} 
+              <ExtendedConfigEdit
+                keyComponent={`${key}-${field.fieldKey}`}
+                values={field}
                 onChangeCallback={(value: any) => onChangeCallback(value, key)}
                 classNameFieldTag="form-control"
                 classNameFieldSelect="form-select"
-                config={{config: config, stylesTag: pillStyles?.pillTag || {}}}
+                config={{ config: config, stylesTag: pillStyles?.pillTag || {} }}
               />
             }
           </div>

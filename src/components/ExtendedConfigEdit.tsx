@@ -20,9 +20,9 @@ export const ExtendedConfigEdit = ({ values, onChangeCallback, keyComponent, cla
 
   const { options, tags, actions, onAddTag, onRemoveTag, onFinishEdit } = useActionsTag(values, onChangeCallback);
   return (
-    <div className="validation-builder-container-tags">
+    <div className={`${classNameFieldTag === "form-control" ? 'd-flex flex-wrap' : "validation-builder-container-tags"}`}>
       {tags.length > 0 && tags.map((item, index) => (
-        <React.Fragment key={`${item.tag}-${keyComponent}`}>
+        <div key={`${item.tag}-${keyComponent}`}>
           <Tag styles={config.stylesTag} name={item.tag}
             data={actions.find(e => e.tag === item.tag)}
             namekey="tag"
@@ -31,7 +31,7 @@ export const ExtendedConfigEdit = ({ values, onChangeCallback, keyComponent, cla
             classNameField={classNameFieldTag}
             config={config.config}
           />
-        </React.Fragment>
+        </div>
       ))}
       <div className="validation-builder-conatainer-select-tag">
         {options.length !== 1 && <SelectCustom options={options} name="selectTag" onChange={onAddTag} className={classNameFieldSelect} />}

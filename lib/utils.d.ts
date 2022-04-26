@@ -7,19 +7,33 @@ export declare const types: {
         name: string;
         fieldType: string;
         key?: undefined;
+        deps?: undefined;
     } | {
         name: string;
         key: string;
         fieldType: string;
+        deps?: undefined;
+    } | {
+        name: string;
+        fieldType: string;
+        deps: string[];
+        key?: undefined;
     })[];
     number: ({
         name: string;
         fieldType: string;
         key?: undefined;
+        deps?: undefined;
     } | {
         name: string;
         key: string;
         fieldType: string;
+        deps?: undefined;
+    } | {
+        name: string;
+        fieldType: string;
+        deps: string[];
+        key?: undefined;
     })[];
     date: ({
         name: string;
@@ -35,11 +49,3 @@ export declare const types: {
         fieldType: string;
     }[];
 };
-export declare const parseToProperties: (values: any) => {
-    properties: {};
-    required: any;
-    errors: {};
-    key: any;
-};
-export declare const searchKeyData: (data: any, key: any) => object;
-export declare const getList: (values: any, errors: any) => object[];
