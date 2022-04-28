@@ -89,7 +89,7 @@ const Tag = ({ data, styles, onClickTag, namekey, onRemove, onEditTag, className
 }
 const Message = ({ data, config }) => (
   <div className="validation-builder-item-message"
-    style={{ opacity: data.value && data.value.message && data.value.message !== "" ? 1 : 0.60, ...config && config.message && config.message.styles }}
+    style={{ opacity: data.value && data.value.message && data.value.message !== "" ? 1 : 0.40, ...config && config.message && config.message.styles }}
   >
     {config && config.message ?
       <React.Fragment>
@@ -101,7 +101,7 @@ const Message = ({ data, config }) => (
 );
 
 const NumberComponent = ({ value, config }) => (
-  <div className="validation-builder-item-action" style={{...config && config.valueNumberTag && config.valueNumberTag.styles, opacity: value && value !== "" ? 1 : 0.60 }}>
+  <div className="validation-builder-item-action" style={{...config && config.valueNumberTag && config.valueNumberTag.styles, opacity: value && value !== "" ? 1 : 0.40 }}>
     {config && config.valueNumberTag ?
       <React.Fragment>
         {config.valueNumberTag.icon && <i className={config.valueNumberTag.icon}></i>}
@@ -113,7 +113,7 @@ const NumberComponent = ({ value, config }) => (
 
 const StringComponent = ({ value, config }) => (
   <div className='validation-builder-item-tag-string'
-    style={{ opacity: value && value !== "" ? 1 : 0.60, ...config && config.valueStringTag && config.valueStringTag.styles }}>
+    style={{ opacity: value && value !== "" ? 1 : 0.40, ...config && config.valueStringTag && config.valueStringTag.styles }}>
     {config && config.valueStringTag ?
       <React.Fragment>
         {config.valueStringTag.icon && <i className={config.valueStringTag.icon}></i>}
@@ -125,7 +125,7 @@ const StringComponent = ({ value, config }) => (
 
 const DateComponent = ({ value, config }) => (
   <div className='validation-builder-item-tag-string'
-    style={{ opacity: value && value !== "" ? 1 : 0.60, ...config && config.valueDateTag && config.valueDateTag.styles }}>
+    style={{ opacity: value && value !== "" ? 1 : 0.40, ...config && config.valueDateTag && config.valueDateTag.styles }}>
     {config && config.valueDateTag ?
       <React.Fragment>
         {config.valueDateTag.icon && <i className={config.valueDateTag.icon}></i>}

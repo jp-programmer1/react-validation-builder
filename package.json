@@ -1,6 +1,6 @@
 {
   "name": "react-validation-builder",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "validation builder dynamic",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -14,7 +14,10 @@
   "keywords": [
     "validation",
     "react-validation",
-    "editor-validation"
+    "editor-validation",
+    "dynamic-validation",
+    "convert-yup",
+    "transform yup editor"
   ],
   "author": "Juan P. Fernández - jpprogrammer1@gmail.com - https://www.linkedin.com/in/juan-pablo-fern%C3%A1ndez-23a940180/",
   "license": "MIT",
