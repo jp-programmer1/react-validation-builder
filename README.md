@@ -8,6 +8,8 @@ $ npm install react-validation-builder
 $ yarn add react-validation-builder
 ```
 ## Integration
+icons work with [fontAwesome](https://fontawesome.com/icons)
+
 ```
   import React, { useState } from 'react';
   import { ValidationBuilderEditor } from 'react-validation-builder';
