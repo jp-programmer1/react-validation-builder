@@ -62,6 +62,17 @@ $ yarn add react-validation-builder
   const schemaYup = transformSchemaToYup(schema);
 ```
 
+### Resolve Expression (type expression)
+#### resolve expression with custom function
+```
+  import { transformSchemaToYup } from 'react-validation-builder';
+
+  const resolveValue = (fieldKey, fieldValue, expression) => {
+    // return a true if passed else return a false
+  }
+
+  const schemaYup = transformSchemaToYup(schema);
+```
 ### component for bootstrap
 ```
   import { ValidationBuilderEditor } from 'react-validation-builder/lib/bootstrap';
