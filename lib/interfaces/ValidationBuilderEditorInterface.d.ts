@@ -98,4 +98,8 @@ export interface DataInterface {
     "integer"?: {
         "message"?: string;
     };
+    "expression"?: {
+        "message"?: string;
+        "value"?: string;
+    };
 }

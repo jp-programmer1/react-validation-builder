@@ -63,15 +63,13 @@
   grid-template-columns: repeat(5, 1fr);
 }
 .validation-builder-grid{
-  display: grid;
-  width: 11rem;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
   align-items: center;
-  grid-gap: 1px;
 }
 .validation-builder-label{
   padding-left: 0.75rem;
-  width: 5rem;
+  flex: 1;
+  margin-right: 0.5rem;
   text-align: left;
 }
 .validate-editor-container-config-tags .validation-builder-data-tags {
@@ -187,6 +185,9 @@
   width: 90%;
   margin: 0 auto;
 }
+.validation-builder-container-dropdown{
+  margin-left: 0.5rem;
+}
 .validate-builder-container .validation-builder-field-action{
   padding: 0.3rem;
 }
@@ -203,6 +204,7 @@
   opacity: 0;
   transition: all .2s ease-in-out;
   text-align: end;
+  margin-left: 0.5rem;
 }
 .validation-builder-badge.validation-builder-grid:hover > .validation-builder-container-remove-tag{
   opacity: 1;

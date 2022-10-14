@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 interface DropdownActionInterface {
   children: JSX.Element;
   iconComponent: JSX.Element;
   onFinished: () => void;
   onClose?: (e: any) => void;
 }
-export const DropdownAction = ({ children, iconComponent, onFinished, onClose }: DropdownActionInterface) => {
+export const DropdownAction = ({ children, iconComponent, onFinished }: DropdownActionInterface) => {
   const [edit, setEdit] = useState(false);
 
-  const child = React.Children.map(children, (c, index) => {
+  const child = React.Children.map(children, (c) => {
     return React.cloneElement(c, {
       ...c.props,
+      activateFocus: edit,
       onEnter: (e:any) => {
         if(e.key === "Enter"){
           onFinished();
