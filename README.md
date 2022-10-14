@@ -71,7 +71,7 @@ $ yarn add react-validation-builder
     // return a true if passed else return a false
   }
 
-  const schemaYup = transformSchemaToYup(schema);
+  const schemaYup = transformSchemaToYup(schema, resolveValue);
 ```
 ### component for bootstrap
 ```
