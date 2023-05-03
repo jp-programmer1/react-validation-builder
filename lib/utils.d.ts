@@ -44,8 +44,13 @@ export declare const types: {
         key: string;
         fieldType: string;
     })[];
-    boolean: {
+    boolean: ({
         name: string;
         fieldType: string;
-    }[];
+        key?: undefined;
+    } | {
+        name: string;
+        key: string;
+        fieldType: string;
+    })[];
 };
