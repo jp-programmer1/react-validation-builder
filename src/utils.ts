@@ -28,16 +28,16 @@ export const types = {
     { name: "positive", fieldType: "boolean", deps: ["negative"] },
     { name: "negative", fieldType: "boolean", deps: ["positive"] },
     { name: "integer", fieldType: "boolean" },
-    { name: "expression", fieldType: "string" }
+    { name: "expression", key: "value", fieldType: "string" }
   ],
   "date": [
     { name: "required", fieldType: "boolean" },
     { name: "min", key: "limit", fieldType: "date" },
     { name: "max", key: "limit", fieldType: "date" },
-    { name: "expression", fieldType: "string" }
+    { name: "expression", key: "value", fieldType: "string" }
   ],
   "boolean": [
     { name: "required", fieldType: "boolean" },
-    { name: "expression", fieldType: "string" }
+    { name: "expression", key: "value", fieldType: "string" }
   ]
 }
